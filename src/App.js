@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HomePage from './components/HomePage/HomePage';
+import SignInPage from './components/SignInPage';
+import CreateAccountPage from './components/CreateAccountPage';
+import ForgotPasswordPage from './components/ForgotPasswordPage';
+import ResourcesPageBeforeSignIn from './components/ResourcesPageBeforeSignIn';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+        <div className="App">
+           <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/signIn" component={SignInPage} />
+              <Route exact path="/createAccount" component={CreateAccountPage} />
+              <Route exact path="/forgotPassword" component={ForgotPasswordPage} />
+              <Route exact path="/resources" component={ResourcesPageBeforeSignIn} />
+      {/* <Route exact path="/welcomepage" component={WelcomePage} />
+      <Route exact path="/dashboardpage" component={DashboardPage} />
+      <Route exact path="/complaintspage" component={ComplaintsPage} /> */}
+      </Switch>
+
     </div>
+    </Router>
+    
   );
 }
 
