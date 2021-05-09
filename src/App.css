@@ -957,7 +957,7 @@ input[type=text], input[type=password], input[type=email]::placeholder {
 .resourcesbeforesigninallcatogeriescontainer {
   position: absolute;
   top: 139px;
-  left: 68px;
+  left: 680px;
   background-color: #fff;
   border-radius: 8px;
   padding: 8px;
@@ -976,7 +976,7 @@ input[type=text], input[type=password], input[type=email]::placeholder {
 
 .resourcesbeforesigninvideoscontainer {
   position: absolute;
-  top: 135px;
+  top: 139px;
   left: 1030px;
   background-color: #fff;
   border-radius: 8px;
