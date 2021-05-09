@@ -954,6 +954,44 @@ input[type=text], input[type=password], input[type=email]::placeholder {
   top: 120px;
 }
 
+.resourcesbeforesigninallcatogeriescontainer {
+  position: absolute;
+  top: 135px;
+  left: 750px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 8px;
+  font-family: Sora;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  color: #002D40;
+  height: 40px;
+  width: 319px;
+
+
+}
+
+.resourcesbeforesigninvideoscontainer {
+  position: absolute;
+  top: 135px;
+  left: 1090px;
+  background-color: #fff;
+  border-radius: 8px;
+  font-family: Sora;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  color: #002D40;
+  text-align: center;
+  height: 40px;
+  width: 200px;
+}
+
 .resourcepage-search-button {
   width: 123.09px;
   padding: 15.5px 5px;
@@ -964,9 +1002,107 @@ input[type=text], input[type=password], input[type=email]::placeholder {
   left: 400px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Sora';
 }
 
 .resources-input-container {
   border: none!important;
   background-color:#fff;
+}
+
+.resourcesbeforesigninselectcontainer {
+  border: none;
+}
+
+.resourcesbeforesigninvideoselectcontainer {
+  border: none;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+.resourcesbeforesigninfootercontainer {
+  position: absolute;
+  width: 1202px;
+  height: 120.91px;
+  left: 120px;
+  top: 468.09px;
+  margin-top: 50px;
+}
+
+.resourcesbeforesigninfootersubcontainer {
+  color: #fff;
+}
+
+.resourcesbeforesigninfooterheader { 
+  font-size: 18px;
+  font-weight: 700;
+  position: absolute;
+  height: 24.667327880859375px;
+  line-height: 27px;
+  width: 338px;
+  left: 4.78%;
+  right: 63.75%;
+  top: 1.38%;
+  font-family: Sora;
+  font-style: normal;
+  letter-spacing: 0em;
+}
+
+.resourcesbeforesigninfootertitle {
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: left;
+position: absolute;
+left: 4.78%;
+top: 29.53%;
+}
+
+.vectorIconAndTextContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 4.78%;
+  top: 75.8%;
+  padding: 25px 40px;
+  background: #1AA6B7;
+  Width :113.67px;
+  Height :50px;
+}
+
+.vectorIcon {
+  position: absolute;
+  height: 15px;
+  width: 11.666666984558105px;
+  left: 15px;
+  top: 18px;
+}
+
+.vectorText {
+  font-family: Sora;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #002D40;
+  padding-top: 17px;
+  padding-left: 5px;
+}
+
+.iconsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  position: absolute;
+  top: 95px;
+  left: 200px;
+  width: 20px;
 }
