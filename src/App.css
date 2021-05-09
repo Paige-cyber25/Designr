@@ -956,8 +956,8 @@ input[type=text], input[type=password], input[type=email]::placeholder {
 
 .resourcesbeforesigninallcatogeriescontainer {
   position: absolute;
-  top: 135px;
-  left: 750px;
+  top: 139px;
+  left: 68px;
   background-color: #fff;
   border-radius: 8px;
   padding: 8px;
@@ -977,7 +977,7 @@ input[type=text], input[type=password], input[type=email]::placeholder {
 .resourcesbeforesigninvideoscontainer {
   position: absolute;
   top: 135px;
-  left: 1090px;
+  left: 1030px;
   background-color: #fff;
   border-radius: 8px;
   font-family: Sora;
@@ -1028,7 +1028,7 @@ input[type=text], input[type=password], input[type=email]::placeholder {
   height: 120.91px;
   left: 120px;
   top: 468.09px;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .resourcesbeforesigninfootersubcontainer {
