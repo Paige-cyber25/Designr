@@ -20,7 +20,7 @@ function TopNavbar({activeC}) {
                 <Nav.Link href="/slackCommunity" className="nav-item4">Slack Community</Nav.Link>
                 </Nav>
                 <Nav className="nav-right-links text-center">
-                <Nav.Link href="#signIn" className={clsx("ml-lg-3 pl-lg-3 nav-right-item1", activeC === '/signIn' ? 'active' : 'red')}
+                <Nav.Link href="#signIn" className={clsx("ml-lg-3 pl-lg-3 nav-right-item1", activeC === '/signIn' ? 'active' : '')}
                 onClick={()=>setModalShow(true)}>Sign In</Nav.Link>
                     <Button className="mr-lg-5 ml-lg-3 nav-right-item2">Get Started</Button>
                 </Nav>
