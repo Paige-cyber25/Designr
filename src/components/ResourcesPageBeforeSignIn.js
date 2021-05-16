@@ -2,6 +2,7 @@ import React from 'react';
 import TopNavbar from './Navbar';
 import Footer from './Footer';
 import Avatar from '@material-ui/core/Avatar';
+import CarouselContainer from './Carousel';
 
 
 function ResourcesPageBeforeSignIn() {
@@ -55,6 +56,22 @@ function ResourcesPageBeforeSignIn() {
                      </div>
                      
                 </div>
+           </div>
+           <div className="resourcesbeforesignincarouselcontainer">
+               <div>
+                    <h3>Popular on Designr</h3>
+                    <CarouselContainer />
+               </div>
+               <div>
+                    <h3>New Releases</h3>
+                    <CarouselContainer />
+               </div>
+               <div>
+                    <h3>Trending on  Designr</h3>
+                    <CarouselContainer />
+               </div>
+               
+
            </div>
            <Footer />
         </>

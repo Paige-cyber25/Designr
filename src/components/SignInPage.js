@@ -2,13 +2,47 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
 import TopNavbar from './Navbar';
+import Validation from './Validation';
 
 function SignInPage() {
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
+  }
 
-  };
+  const [inputs, setInputs] = useState({
+        username : '',
+        password: '',
+    })
+
+    function handleEmail(e) {
+        setInputs({
+            ...inputs,
+            email:e.target.value
+        })
+    }
+
+    function handlePassword(e) {
+        setInputs({
+            ...inputs,
+            password:e.target.value
+        })
+    }
+
+
+  // validates the password inputted by the user
+//   const validatePassword = (value) => {
+//     if (value.length < 6) {
+//         return 'Password should be at least 6 characters.';
+//   } else if (
+//         !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value)
+//   ) {
+//         return 'Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol.';
+//   }
+//         return true;
+// };
+
+    
     return (
         <div className="create-account-container">
             <TopNavbar activeC="/signIn"/>
@@ -16,12 +50,14 @@ function SignInPage() {
                 <div class="split left">
                 <div class="container text-center">
                    <h3 className="split-left-header container text-center">Sign In</h3>
-                   <form>
+                   <form> 
                        <div>
                            <input 
                                 type="email"
                                 name="email"
                                 placeholder="Email Address"
+                                value={inputs.email}
+                                onChange={handleEmail}
                             />
                        </div>
                        <div className="password-container">
@@ -29,6 +65,8 @@ function SignInPage() {
                                 type={passwordShown ? "text" : "password"}
                                 name="password"
                                 placeholder="Password"
+                                value={inputs.password}
+                               onChange={handlePassword}
                             />
                             {passwordShown ? <i className="far fa-eye"
                             onClick={togglePasswordVisiblity}>
@@ -48,9 +86,12 @@ function SignInPage() {
                                 
                             </label>
                        </div>
+                       <Link to="/resourcesAfterSignIn">
                         <div className="container text-center">
                             <button type="button" className="create-account-button container text-center">Sign In</button>
                         </div>
+                       </Link>
+                       
                         <p className="create-account-content container text-center">or</p>
                        <div className="createAccount-icons">
                            <img src="/google.png" alt="" />
