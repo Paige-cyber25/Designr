@@ -22,7 +22,6 @@ function CreateAccountPage() {
         return false;
     }
   }
-  const [password, setPassword] = useState(false);
 
   const [inputs, setInputs] = useState({
         fullName : '',
@@ -30,8 +29,17 @@ function CreateAccountPage() {
         password: '',
     })
 
-    function handleOnAbort() {
-        return inputs.password.length < 7
+    function handleOnBlur(field) {
+        switch (field) {
+            case 'passwordLength':
+                return inputs.password.length < 7
+                
+            case 'validateEmail':
+                return !validate.isValidMail()
+            default:
+                break;
+        }
+        
     }
 
     function handleChange(e) {
@@ -43,23 +51,13 @@ function CreateAccountPage() {
             [e.target.name]: e.target.value
         })
     }
+    const validate = new Validation(inputs);
     function handleSubmit (e) {
         e.preventDefault();
-        if(isEmpty()) {
-            return setErrors({...errors, emptyField:true})
-        }
-        setErrors(false)
-        setPassword(false)
-        const validate = new Validation(inputs);
-        if(validate.emptyFields) {
-            console.log('object')
-           return setErrors(true)
-        } 
-         if(validate.validatePwd) {
-            console.log('password');
-           setErrors(false);
-          return setPassword(true);
-        } 
+        if(isEmpty()) return setErrors({...errors, emptyField:true})
+        if(!validate.isValidMail()) return setErrors({...errors, inValidEmail:true})
+        if(inputs.password.length < 7) return setErrors({...errors, passwordLength:true})
+        console.log('Validation passed!!');
     }
 
     return (
@@ -86,7 +84,9 @@ function CreateAccountPage() {
                                 placeholder="Email Address"
                                 value={inputs.email}
                                 onChange={handleChange}
+                                onBlur={()=>setErrors({...errors, inValidEmail:handleOnBlur('validateEmail')})}
                             />
+                            {errors.inValidEmail ? <p style={{color:'red'}}>Invalid email format</p>:''}
                        </div>
                        <div className="password-container">
                            <input 
@@ -95,13 +95,17 @@ function CreateAccountPage() {
                                 placeholder="Password"
                                 value={inputs.password}
                                 onChange={handleChange}
+                                onBlur={()=>
+                                    setErrors({...errors, passwordLength:handleOnBlur("passwordLength")})
+                                }
+
                             />
                             {passwordShown ? <i className="far fa-eye"
                             onClick={togglePasswordVisiblity}>
                             </i> : <i className="far fa-eye-slash" 
                             onClick={togglePasswordVisiblity}>
                             </i>}
-                           {password && <p style={{color:'red'}}>Password is required</p>}  
+                           {errors.passwordLength ? <p style={{color:'red'}}>Password length must be greater than 7 characters</p> : ''}   
                        </div>
                             <div className="container text-center">
                                     <button type="submit"
