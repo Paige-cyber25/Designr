@@ -8,7 +8,8 @@ function SlackCommunity() {
         <div>
             <TopNavbar activeC="/slackCommunity"/> 
             <div className="topSlackCommunityContainer">
-                <div className="topSlackCommunityContentContainer container text-center">
+                 <img src="/slackCommunityBackgroundImage.png" alt="" className="slackCommunityBackgroundImage"/>
+                <div className="topSlackCommunityContentContainer">
                     <h3>Join our Slack Community</h3>
                     <p className="container text-center">Utilizing our global network of 600+ inspirational creatives, we want to bring people together, 
                         tell stories and create a safe space where designers can grow together.</p>
@@ -23,45 +24,54 @@ function SlackCommunity() {
             <Container className="fourth-subsection-container container text-center">
                 <Row>
                     <Col sm>
-                    <img src="/creativecomIcon.jpeg" alt="" className="fourthSectionIcons" />
-                    <h4 className="fourth-subsection-header container text-center">A Creative Community</h4>
-                    <p className="fourth-subsection-content container text-center">Link up with other creatives on our community to get support, advice and peer-feedback on your projects.</p>
-                    <button type="button" className="fourth-subsection-button container text-center">Join our slack community</button>
+                    <img src="/mentorship.png" alt="" className="fourthSectionIcons" />
+                    <h4 className="fourth-subsection-header container text-center">Mentorship</h4>
+                    <p className="fourth-subsection-content container text-center">Find a mentor or become a mentor and help fellow designers.</p>
+                    
                     </Col>
                     <Col sm>
-                    <img src="/unlimitedArtIcon.jpeg" alt="" className="fourthSectionIcons" />
-                    <h4 className="fourth-subsection-header container text-center">Unlimited Article Library</h4>
-                    <p className="fourth-subsection-content container text-center">Our article library features 9,000+ articles curated from around the web. Bookmark, read and share.</p>
-                    <button type="button" className="fourth-subsection-button container text-center">Get started for free</button>
+                    <img src="/realTimeChat.png" alt="" className="fourthSectionIcons" />
+                    <h4 className="fourth-subsection-header container text-center">Real-Time Chat</h4>
+                    <p className="fourth-subsection-content container text-center">Get answers to your burning questions in real-time. Over 40,000 messages sent.</p>
+                    
                 </Col>
                 <Col sm>
-                    <img src="/tutorialsIcon.jpeg" alt="" className="fourthSectionIcons" />
-                    <h4 className="fourth-subsection-header container text-center">Tutorials by Designers</h4>
-                    <p className="fourth-subsection-content container text-center">Get expert  knowledge through videos contibuted  by creatives like you. All in one place.</p>
-                    <button type="button" className="fourth-subsection-button container text-center">Explore our resources</button>
+                    <img src="/jobBoard.png" alt="" className="fourthSectionIcons" />
+                    <h4 className="fourth-subsection-header container text-center">Job Boards</h4>
+                    <p className="fourth-subsection-content container text-center">Up-to-date job listings and application walk-through process for newbies.</p>
+                    
                 </Col>
             </Row>
             <Row>
                     <Col sm>
-                    <img src="/creativecomIcon.jpeg" alt="" className="fourthSectionIcons" />
-                    <h4 className="fourth-subsection-header container text-center">A Creative Community</h4>
-                    <p className="fourth-subsection-content container text-center">Link up with other creatives on our community to get support, advice and peer-feedback on your projects.</p>
-                    <button type="button" className="fourth-subsection-button container text-center">Join our slack community</button>
+                    <img src="/lastingConnections.png" alt="" className="fourthSectionIcons" />
+                    <h4 className="fourth-subsection-header container text-center">Lasting Connections</h4>
+                    <p className="fourth-subsection-content container text-center"> Become part of a diverse community of designers from across the globe.</p>
+                    
                     </Col>
                     <Col sm>
-                    <img src="/unlimitedArtIcon.jpeg" alt="" className="fourthSectionIcons" />
-                    <h4 className="fourth-subsection-header container text-center">Unlimited Article Library</h4>
-                    <p className="fourth-subsection-content container text-center">Our article library features 9,000+ articles curated from around the web. Bookmark, read and share.</p>
-                    <button type="button" className="fourth-subsection-button container text-center">Get started for free</button>
+                    <img src="/portfolioReview.png" alt="" className="fourthSectionIcons" />
+                    <h4 className="fourth-subsection-header container text-center">Portfolio Review</h4>
+                    <p className="fourth-subsection-content container text-center">We share inspirational portfolios you’ll love! We’ll also review your portfolio. </p>
+                    
                 </Col>
                 <Col sm>
-                    <img src="/tutorialsIcon.jpeg" alt="" className="fourthSectionIcons" />
-                    <h4 className="fourth-subsection-header container text-center">Tutorials by Designers</h4>
-                    <p className="fourth-subsection-content container text-center">Get expert  knowledge through videos contibuted  by creatives like you. All in one place.</p>
-                    <button type="button" className="fourth-subsection-button container text-center">Explore our resources</button>
+                    <img src="/localEvents.png" alt="" className="fourthSectionIcons" />
+                    <h4 className="fourth-subsection-header container text-center">Local Events</h4>
+                    <p className="fourth-subsection-content container text-center">Participate in local events and meet fellow designers in your city.</p>
+                    
                 </Col>
             </Row>
         </Container>
+            </div>
+            <div className="footerSlackCommunityContainer">
+                <div className="footerSlackCommunityContentContainer">
+                    <h2>Ready to join our Community?</h2>
+                    <h4>We can’t wait to have you aboard</h4>
+                </div>
+                <div className="footerSlackCommunityButtonContainer">
+                    <button type="button" className="container text-center">Join our Slack Community here</button>
+                </div>
             </div>
             <Footer />
         </div>
