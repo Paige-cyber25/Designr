@@ -107,11 +107,22 @@ function CreateAccountPage() {
                             </i>}
                            {errors.passwordLength ? <p style={{color:'red'}}>Password length must be greater than 7 characters</p> : ''}   
                        </div>
+                       {inputs.fullName && inputs.email && inputs.password ? (
+                           <Link to="/resourcesAfterSignIn">
                             <div className="container text-center">
                                     <button type="submit"
                                     className="create-account-button container text-center">Create an account</button>
                                     {errors.emptyField  ? <p style={{color:'red'}}>All form fields are required</p> : ''}
                             </div>
+                            </Link>)
+                            : 
+                            <div className="container text-center">
+                                    <button type="submit"
+                                    className="create-account-button container text-center">Create an account</button>
+                                    {errors.emptyField  ? <p style={{color:'red'}}>All form fields are required</p> : ''}
+                            </div>
+                       }
+                       
                         
                         <p className="create-account-content">By clicking the “Create Account” button, 
                             you agree to Designr’s terms of acceptable use.

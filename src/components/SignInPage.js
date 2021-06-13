@@ -2,32 +2,76 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Footer from './Footer';
 import TopNavbar from './Navbar';
-import Validation from './Validation';
+import {Validation} from './Validation';
 
 function SignInPage() {
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   }
+  const [errors, setErrors] = useState({
+      emptyField:false,
+      inValidEmail:false,
+      passwordLength:false,
+  });
 
+  const isEmpty = ()=> {
+    if(!inputs.email.trim() || !inputs.password.trim()) {
+        return true;
+    } else {
+        return false;
+    }
+  }
   const [inputs, setInputs] = useState({
-        username : '',
+        email : '',
         password: '',
     })
 
-    function handleEmail(e) {
-        setInputs({
-            ...inputs,
-            email:e.target.value
-        })
+    function handleOnBlur(field) {
+        switch (field) {
+            case 'passwordLength':
+                return inputs.password.length < 7
+                
+            case 'validateEmail':
+                return !validate.isValidMail()
+            default:
+                break;
+        }
+        
     }
 
-    function handlePassword(e) {
+    function handleChange(e) {
+        setErrors({emptyField:false,
+      inValidEmail:false,
+      passwordLength:false})
         setInputs({
             ...inputs,
-            password:e.target.value
+            [e.target.name]: e.target.value
         })
     }
+    const validate = new Validation(inputs);
+    function handleSubmit (e) {
+        e.preventDefault();
+        if(isEmpty()) return setErrors({...errors, emptyField:true})
+        if(!validate.isValidMail()) return setErrors({...errors, inValidEmail:true})
+        if(inputs.password.length < 7) return setErrors({...errors, passwordLength:true})
+        console.log('Validation passed!!');
+    }
+
+
+    // function handleEmail(e) {
+    //     setInputs({
+    //         ...inputs,
+    //         email:e.target.value
+    //     })
+    // }
+
+    // function handlePassword(e) {
+    //     setInputs({
+    //         ...inputs,
+    //         password:e.target.value
+    //     })
+    // }
 
 
   // validates the password inputted by the user
@@ -50,15 +94,17 @@ function SignInPage() {
                 <div class="split left">
                 <div class="container text-center">
                    <h3 className="split-left-header container text-center">Sign In</h3>
-                   <form> 
+                   <form onSubmit={{handleSubmit}}> 
                        <div>
                            <input 
                                 type="email"
                                 name="email"
                                 placeholder="Email Address"
                                 value={inputs.email}
-                                onChange={handleEmail}
+                                onChange={handleChange}
+                                onBlur={()=>setErrors({...errors, inValidEmail:handleOnBlur('validateEmail')})}    
                             />
+                            {errors.inValidEmail ? <p style={{color:'red'}}>Invalid email format</p>:''}
                        </div>
                        <div className="password-container">
                            <input 
@@ -66,13 +112,17 @@ function SignInPage() {
                                 name="password"
                                 placeholder="Password"
                                 value={inputs.password}
-                               onChange={handlePassword}
+                               onChange={handleChange}
+                               onBlur={()=>
+                                    setErrors({...errors, passwordLength:handleOnBlur("passwordLength")})
+                                }
                             />
                             {passwordShown ? <i className="far fa-eye"
                             onClick={togglePasswordVisiblity}>
                             </i> : <i className="far fa-eye-slash" 
                             onClick={togglePasswordVisiblity}>
                             </i>}
+                            {errors.passwordLength ? <p style={{color:'red'}}>Password length must be greater than 7 characters</p> : ''}
                        </div>
                        <div className="checkbox-container container text-left">
                            <input 
@@ -86,11 +136,17 @@ function SignInPage() {
                                 
                             </label>
                        </div>
+                       {inputs.password  && inputs.email ? 
                        <Link to="/resourcesAfterSignIn">
                         <div className="container text-center">
                             <button type="button" className="create-account-button container text-center">Sign In</button>
                         </div>
-                       </Link>
+                       </Link> : 
+                       <div className="container text-center">
+                            <button type="button" className="create-account-button container text-center">Sign In</button>
+                        </div>
+                        }
+                       
                        
                         <p className="create-account-content container text-center">or</p>
                        <div className="createAccount-icons">

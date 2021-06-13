@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import SignInModal from '../components/SignInModal';
 import Badge from '@material-ui/core/Badge';
 import '../App.css';
@@ -22,7 +22,7 @@ function TopNavbar({activeC}) {
                 <Nav.Link href="/jobBoard" className={clsx("mr-3 nav-item3", activeC === "/jobBoard" ? 'active' : '')}><span>Job Board</span></Nav.Link>
                 <Nav.Link href="/slackCommunity" className={clsx("nav-item4", activeC === "/slackCommunity" ? 'active' : '')}>Slack Community</Nav.Link>
                 </Nav>
-                {location.pathname === '/about' || location.pathname === '/jobBoard' || location.pathname === '/slackCommunity' ? (
+                {location.pathname === '/about' || location.pathname === '/jobBoard' || location.pathname === '/slackCommunity' || location.pathname === '/resourcesAfterSignIn' ? (
                         <div className="nav-right-links text-center">
                              <img src="/navbarAvatar.png" alt="" className="navbarAvatar" />
                              <Badge badgeContent={3} className="navbarBadge" ></Badge>
@@ -31,7 +31,10 @@ function TopNavbar({activeC}) {
                     <Nav className="nav-right-links text-center">
                 <Nav.Link href="#signIn" className={clsx("ml-lg-3 pl-lg-3 nav-right-item1", activeC === '/signIn' ? 'active' : '')}
                 onClick={()=>setModalShow(true)}>Sign In</Nav.Link>
+                <Link to="/createAccount">
                     <Button className="mr-lg-5 ml-lg-3 nav-right-item2">Get Started</Button>
+                </Link>
+                    
                 </Nav>
                 )}
                 
