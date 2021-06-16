@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TopNavbar from './Navbar';
 import Footer from './Footer';
 import Avatar from '@material-ui/core/Avatar';
@@ -6,6 +6,9 @@ import CarouselContainer from './Carousel';
 
 
 function ResourcesPageBeforeSignIn() {
+    useEffect(()=> {
+        window.scrollTo(0,0)
+    },[]);
     return (
         <>
            <TopNavbar activeC ="/resources" />

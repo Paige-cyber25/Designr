@@ -1,10 +1,19 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import {Button} from '@material-ui/core';
 import Footer from './Footer';
 import TopNavbar from './Navbar';
 import {Validation} from './Validation';
+import {GoogleLogin} from 'react-google-login';
+import useStyles from './styles';
+import Toast from './Toast';
+import { useDispatch } from 'react-redux';
+import { AUTH } from '../constants/actionTypes';
 
 function SignInPage() {
+     const classes = useStyles();
+     const dispatch = useDispatch();
+    const history = useHistory();
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -58,35 +67,22 @@ function SignInPage() {
         console.log('Validation passed!!');
     }
 
+    const googleSuccess = async (res) => {
+        const result = res?.profileObj;
+        const token = res?.tokenId;
 
-    // function handleEmail(e) {
-    //     setInputs({
-    //         ...inputs,
-    //         email:e.target.value
-    //     })
-    // }
+        try {
+        dispatch({ type: AUTH, data: { result, token } });
 
-    // function handlePassword(e) {
-    //     setInputs({
-    //         ...inputs,
-    //         password:e.target.value
-    //     })
-    // }
-
-
-  // validates the password inputted by the user
-//   const validatePassword = (value) => {
-//     if (value.length < 6) {
-//         return 'Password should be at least 6 characters.';
-//   } else if (
-//         !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value)
-//   ) {
-//         return 'Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol.';
-//   }
-//         return true;
-// };
-
-    
+      history.push('/resourcesAfterSignIn');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    const googleError = ()=> {
+        <Toast />
+    }
+ 
     return (
         <div className="create-account-container">
             <TopNavbar activeC="/signIn"/>
@@ -150,9 +146,26 @@ function SignInPage() {
                        
                         <p className="create-account-content container text-center">or</p>
                        <div className="createAccount-icons">
-                           <img src="/google.png" alt="" />
-                           <img src="/facebook.png" alt="" />
-                           <img src="linkedln.png" alt="" />
+                           {/* <img src="/google.png" alt="" /> */}
+                           <GoogleLogin
+                            clientId="251088068731-s17bit1vouqtji18ddlo0mttcila7kfb.apps.googleusercontent.com"
+                            //render means how are we going to show what we want the client to see
+                            render={(renderProps) => (
+                                <Button 
+                                    className={classes.googleButton} 
+                                    onClick={renderProps.onClick} 
+                                    disabled={renderProps.disabled} 
+                                    
+                                    
+                                >
+                                    <img src="/google.png" alt="google-signin"/>
+                                </Button>
+                            )}
+                            onSuccess={googleSuccess }
+                            onFailure={googleError}
+                            cookiePolicy='single_host_origin'
+                            />
+                          
                        </div>
                    </form>
                    

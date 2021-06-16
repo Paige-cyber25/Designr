@@ -127,12 +127,7 @@ function CreateAccountPage() {
                         <p className="create-account-content">By clicking the “Create Account” button, 
                             you agree to Designr’s terms of acceptable use.
                         </p>
-                        <p className="create-account-content">or</p>
-                       <div className="createAccount-icons">
-                           <img src="/google.png" alt="" />
-                           <img src="/facebook.png" alt="" />
-                           <img src="linkedln.png" alt="" />
-                       </div>
+                       
                    </form>
                    
                 </div>
