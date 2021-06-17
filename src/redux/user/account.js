@@ -18,7 +18,6 @@ export const signup = (values, history) => async (dispatch) => {
      console.log(data, 'tokenmmm, resultttt')
   try {
     dispatch({ type: 'AUTH', data})
-    console.log(data, 'data')
     history.push('/resourcesAfterSignIn')
   } catch (error) {
     console.log(error)

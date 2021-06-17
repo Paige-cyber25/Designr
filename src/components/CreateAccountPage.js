@@ -65,7 +65,7 @@ function CreateAccountPage() {
         
         dispatch(signup(inputs, history))
     }
- console.log(inputs,'user');
+    
     return (
         <div className="create-account-container">
             <TopNavbar activeC="/signIn"/>
