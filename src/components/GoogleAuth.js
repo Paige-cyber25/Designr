@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import GoogleLogin from 'react-google-login'
 import { useDispatch } from 'react-redux'
@@ -33,15 +32,15 @@ export default function GoogleAuth() {
         clientId="251088068731-s17bit1vouqtji18ddlo0mttcila7kfb.apps.googleusercontent.com"
         //render means how are we going to show what we want the client to see
         render={(renderProps) => (
-            <Button 
+            <button 
                 className={classes.googleButton} 
                 onClick={renderProps.onClick} 
                 disabled={renderProps.disabled} 
-                
+                style={{border:'none', background:'#ffffff'}}
                 
             >
                 <img src="/google.png" alt="google-signin"/>
-            </Button>
+            </button>
         )}
         onSuccess={googleSuccess }
         onFailure={googleError}
