@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import Footer from './Footer';
 import TopNavbar from './Navbar';
 import {Validation} from './Validation';
+import {useDispatch} from 'react-redux';
+import { signup} from '../redux/user/account';
 
 function CreateAccountPage() {
+    const history = useHistory();
+    const dispatch = useDispatch()
     const [passwordShown, setPasswordShown] = useState(false);
     const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
@@ -54,20 +58,22 @@ function CreateAccountPage() {
     const validate = new Validation(inputs);
     function handleSubmit (e) {
         e.preventDefault();
-        if(isEmpty()) return setErrors({...errors, emptyField:true})
-        if(!validate.isValidMail()) return setErrors({...errors, inValidEmail:true})
-        if(inputs.password.length < 7) return setErrors({...errors, passwordLength:true})
-        console.log('Validation passed!!');
+        // if(isEmpty()) return setErrors({...errors, emptyField:true})
+        // if(!validate.isValidMail()) return setErrors({...errors, inValidEmail:true})
+        // if(inputs.password.length < 7) return setErrors({...errors, passwordLength:true})
+        // console.log('Validation passed!!');
+        
+        dispatch(signup(inputs, history))
     }
-
+ console.log(inputs,'user');
     return (
         <div className="create-account-container">
             <TopNavbar activeC="/signIn"/>
-            <div className="split-screen-container">
+            <div className="split-screen-container">s
                 <div class="split left">
                 <div class="centered">
                    <h3 className="split-left-header container text-center">Create Account</h3>
-                   <form onSubmit={handleSubmit}>
+                   <form >
                        <div>
                            <input 
                                 type="text"
@@ -108,17 +114,18 @@ function CreateAccountPage() {
                            {errors.passwordLength ? <p style={{color:'red'}}>Password length must be greater than 7 characters</p> : ''}   
                        </div>
                        {inputs.fullName && inputs.email && inputs.password ? (
-                           <Link to="/resourcesAfterSignIn">
+                          
                             <div className="container text-center">
-                                    <button type="submit"
-                                    className="create-account-button container text-center">Create an account</button>
+                                    <button type="submit" onClick={handleSubmit}
+                                    className="create-account-button container text-center" >Create an account</button>
                                     {errors.emptyField  ? <p style={{color:'red'}}>All form fields are required</p> : ''}
                             </div>
-                            </Link>)
+                            )
                             : 
                             <div className="container text-center">
                                     <button type="submit"
-                                    className="create-account-button container text-center">Create an account</button>
+                                    className="create-account-button container text-center"
+                                    >Create an account</button>
                                     {errors.emptyField  ? <p style={{color:'red'}}>All form fields are required</p> : ''}
                             </div>
                        }

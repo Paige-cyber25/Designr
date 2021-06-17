@@ -1,17 +1,15 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import {Button} from '@material-ui/core';
+import GoogleAuth from './GoogleAuth';
 import Footer from './Footer';
 import TopNavbar from './Navbar';
 import {Validation} from './Validation';
-import {GoogleLogin} from 'react-google-login';
-import useStyles from './styles';
-import Toast from './Toast';
+import { signin} from '../redux/user/account';
 import { useDispatch } from 'react-redux';
-import { AUTH } from '../constants/actionTypes';
+
 
 function SignInPage() {
-     const classes = useStyles();
+     
      const dispatch = useDispatch();
     const history = useHistory();
     const [passwordShown, setPasswordShown] = useState(false);
@@ -61,27 +59,14 @@ function SignInPage() {
     const validate = new Validation(inputs);
     function handleSubmit (e) {
         e.preventDefault();
-        if(isEmpty()) return setErrors({...errors, emptyField:true})
-        if(!validate.isValidMail()) return setErrors({...errors, inValidEmail:true})
-        if(inputs.password.length < 7) return setErrors({...errors, passwordLength:true})
-        console.log('Validation passed!!');
+        // if(isEmpty()) return setErrors({...errors, emptyField:true})
+        // if(!validate.isValidMail()) return setErrors({...errors, inValidEmail:true})
+        // if(inputs.password.length < 7) return setErrors({...errors, passwordLength:true})
+        // console.log('Validation passed!!');
+        dispatch(signin(inputs, history))
     }
 
-    const googleSuccess = async (res) => {
-        const result = res?.profileObj;
-        const token = res?.tokenId;
 
-        try {
-        dispatch({ type: AUTH, data: { result, token } });
-
-      history.push('/resourcesAfterSignIn');
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    const googleError = ()=> {
-        <Toast />
-    }
  
     return (
         <div className="create-account-container">
@@ -90,7 +75,7 @@ function SignInPage() {
                 <div class="split left">
                 <div class="container text-center">
                    <h3 className="split-left-header container text-center">Sign In</h3>
-                   <form onSubmit={{handleSubmit}}> 
+                   <form> 
                        <div>
                            <input 
                                 type="email"
@@ -133,11 +118,13 @@ function SignInPage() {
                             </label>
                        </div>
                        {inputs.password  && inputs.email ? 
-                       <Link to="/resourcesAfterSignIn">
+                       
                         <div className="container text-center">
-                            <button type="button" className="create-account-button container text-center">Sign In</button>
+                            <button type="button" 
+                            className="create-account-button container text-center"
+                            onClick={handleSubmit}>Sign In</button>
                         </div>
-                       </Link> : 
+                        : 
                        <div className="container text-center">
                             <button type="button" className="create-account-button container text-center">Sign In</button>
                         </div>
@@ -147,25 +134,7 @@ function SignInPage() {
                         <p className="create-account-content container text-center">or</p>
                        <div className="createAccount-icons">
                            {/* <img src="/google.png" alt="" /> */}
-                           <GoogleLogin
-                            clientId="251088068731-s17bit1vouqtji18ddlo0mttcila7kfb.apps.googleusercontent.com"
-                            //render means how are we going to show what we want the client to see
-                            render={(renderProps) => (
-                                <Button 
-                                    className={classes.googleButton} 
-                                    onClick={renderProps.onClick} 
-                                    disabled={renderProps.disabled} 
-                                    
-                                    
-                                >
-                                    <img src="/google.png" alt="google-signin"/>
-                                </Button>
-                            )}
-                            onSuccess={googleSuccess }
-                            onFailure={googleError}
-                            cookiePolicy='single_host_origin'
-                            />
-                          
+                           <GoogleAuth />
                        </div>
                    </form>
                    
