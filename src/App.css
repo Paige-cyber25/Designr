@@ -456,15 +456,15 @@ html, body {
   background: #F5F3ED;
   margin: 32px 24px;
 }
-
+ 
 .fifth-subsection-card-secondContainer {
   width: 417px;
   height: 293px;
   border-radius: 8px;
   background: #F5F3ED;
-  left: 880px;
+   left: 830px;
   position: absolute;
-  top: 3586px;
+  top: 3518px;
   /* margin: 32px 24px; */
 }
 
@@ -1238,25 +1238,25 @@ top: 29.53%;
 
 .toyin {
   position: absolute;
-  left: 720px;
+  left: 650px;
   top: 400px;
 }
 
 .babaJide {
   position: absolute;
-  left: 1247px;
+  left: 1160px;
   top: 345px;
 }
 
 .graceMary {
   position: absolute;
-  left: 720px;
+  left: 680px;
   top: 590px;
 }
 
 .patience {
   position: absolute;
-  left: 1247px;
+  left: 1160px;
   top: 535px;
 }
 
